@@ -14,7 +14,7 @@
         "boot_command": [
             "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos-6.9-x86_64/ks.cfg<enter><wait>"
         ],
-        "boot_wait": "12s",
+        "boot_wait": "10s",
 
         "http_directory": "http",
         "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
@@ -38,7 +38,7 @@
       },
       {
       "type": "manifest",
-      "output": "build/manifest.json",
+      "output": "build/centos-6.9-manifest.json",
       "strip_path": true
       }
   ],
