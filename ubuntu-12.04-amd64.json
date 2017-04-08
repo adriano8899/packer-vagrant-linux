@@ -20,7 +20,7 @@
       "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA keyboard-configuration/variant=USA console-setup/ask_detect=false ",
       "initrd=/install/initrd.gz -- <enter>"
     ],
-    "boot_wait": "12s",
+    "boot_wait": "10s",
 
     "http_directory": "http",
     "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
@@ -37,10 +37,17 @@
 
     "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p"
   }],
-  "post-processors": [{
+  "post-processors": [
+    {
     "output": "build/ubuntu-12.04-amd64.box",
     "type": "vagrant"
-  }],
+    },
+    {
+    "type": "manifest",
+    "output": "build/ubuntu-12.04-manifest.json",
+    "strip_path": true
+    }
+  ],
   "provisioners": [{
     "type": "shell",
     "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
